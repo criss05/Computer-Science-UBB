@@ -1,0 +1,11 @@
+1 200 gas
+2 50 water
+3 60 heat
+4 80 electricity
+5 130 gas
+6 255 heat
+7 90 heat
+8 89 water
+9 67 gas
+10 93 electricity
+20 300 GAS
