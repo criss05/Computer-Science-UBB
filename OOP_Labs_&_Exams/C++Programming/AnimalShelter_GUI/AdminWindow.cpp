@@ -5,6 +5,13 @@
 #include <qformlayout.h>
 #include <vector>
 #include <qmessagebox.h>
+#include <QtCharts/QChart>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QValueAxis>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarCategoryAxis>
+
 
 AdminWindow::AdminWindow(Service& service, QWidget *parent)
 	: QWidget(parent), service{ service }
@@ -52,7 +59,9 @@ void AdminWindow::initAdminWindow(){
 	admin_layout->addWidget(pets_list);
 
 	go_back_button = new QPushButton{ "Go back" };
+	generate_chart = new QPushButton{ "Generate Chart" };
 	admin_layout->addWidget(go_back_button);
+	admin_layout->addWidget(generate_chart);
 	
 	setWindowTitle("Admin Mode");
 	setWindowIcon(QIcon("admin.png"));
@@ -64,6 +73,7 @@ void AdminWindow::ConnectSignals() {
 	connect(delete_button, &QPushButton::clicked, this, &AdminWindow::DeleteButtonHandler);
 	connect(update_button, &QPushButton::clicked, this, &AdminWindow::UpdateButtonHandler);
 	connect(go_back_button, &QPushButton::clicked, this, &AdminWindow::GoBackToMain);
+	connect(generate_chart, &QPushButton::clicked, this, &AdminWindow::GenerateChartButtonHandler);
 }
 
 void AdminWindow::PopulatePetList() {
@@ -156,4 +166,42 @@ void AdminWindow::SelectPetHandler() {
 	this->breed_edit->setText(QString::fromStdString(clicked_pet.GetBreed()));
 	this->age_edit->setText(QString::number(clicked_pet.GetAge()));
 	this->photograph_edit->setText(QString::fromStdString(clicked_pet.GetPhotograph()));
+}
+
+void AdminWindow::GenerateChartButtonHandler(){
+	QBarSeries* series = new QBarSeries();
+	QBarSet* set = new QBarSet("Pets");
+	*set << service.GetNumberPetAge(1, 3)
+		<< service.GetNumberPetAge(3, 5)
+		<< service.GetNumberPetAge(5, 8)
+		<< service.GetNumberPetAge(8, 10)
+		<< service.GetNumberPetAge(10, NULL);
+
+	series->setLabelsVisible();
+	series->append(set);
+
+	QChart* chart = new QChart();
+	chart->addSeries(series);
+	chart->setTitle("Pets by age");
+	chart->setTheme(QChart::ChartThemeBrownSand);
+	chart->setAnimationOptions(QChart::AllAnimations);
+
+	QStringList categories;
+	categories << "1Y->3Y" << "3Y->5Y" << "5Y->8Y" << "8Y->10Y" << "+10Y";
+
+	QBarCategoryAxis* axis_x = new QBarCategoryAxis();
+	axis_x->append(categories);
+	chart->addAxis(axis_x, Qt::AlignBottom);
+	series->attachAxis(axis_x);
+
+	QValueAxis* axis_y = new QValueAxis();
+	chart->addAxis(axis_y, Qt::AlignLeft);
+	series->attachAxis(axis_y);
+
+	QChartView* chart_view = new QChartView(chart);
+	chart_view->setChart(chart);
+	chart_view->setRenderHint(QPainter::Antialiasing);
+	chart_view->resize(500, 500);
+	chart_view->setWindowTitle("Pets by age");
+	chart_view->show();
 }

@@ -65,6 +65,8 @@ public:
 	//Output: the number of pets from the employeer repository
 	int GetPetSize();
 
+	int GetNumberPetAge(int start_age, int end_age);
+
 	void OpenAdoptionList();
 	void ReadFromFileService();
 };

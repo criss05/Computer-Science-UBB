@@ -26,6 +26,8 @@ private:
 	void UpdateButtonHandler();
 	void SelectPetHandler();
 
+	void GenerateChartButtonHandler();
+
 signals:
 	void Go_back_to_main();
 
@@ -48,4 +50,6 @@ private:
 
 	QListWidget* pets_list;
 	QPushButton* go_back_button;
+
+	QPushButton* generate_chart;
 };

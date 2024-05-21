@@ -64,6 +64,20 @@ int Service::GetPetSize(){
 	return this->employees_repo->GetPetsNumber();
 }
 
+int Service::GetNumberPetAge(int start_age, int end_age){
+	int count = 0;
+	vector<Pet> pets = this->employees_repo->GetPetsFromRepo();
+	for (auto pet : pets)
+		if (end_age != NULL) {
+			if (pet.GetAge() > start_age && pet.GetAge() <= end_age)
+				count++;
+		}
+		else
+			if (pet.GetAge() > start_age)
+				count++;
+	return count;
+}
+
 void Service::OpenAdoptionList(){
 	this->client_repo->OpenAdoptionList();
 }

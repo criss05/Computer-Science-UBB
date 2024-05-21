@@ -8,3 +8,4 @@ Beagle|Bella|2|https://www.zooplus.ro/ghid/wp-content/uploads/2021/07/despre-bea
 Labrador Retriever|Lara|1|https://images.saymedia-content.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MjAxMjg4MjkxNjI5MTQ3Njc1/labrador-retriever-guide.jpg
 Doberman|Cooper|7|https://images.saymedia-content.com/.image/t_share/MjAwMzg3MjgzOTk0NjE3MjA4/doberman-pinscher-guide.jpg
 Doberman|Lucy|9|https://images.saymedia-content.com/.image/t_share/MjAwMzg3MjgzOTk0NjE3MjA4/doberman-pinscher-guide.jpg
+breaad|NAME|999|www.likn
