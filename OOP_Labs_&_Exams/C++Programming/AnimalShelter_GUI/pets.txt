@@ -1,0 +1,10 @@
+Labrador Retriever|Luna|4|https://images.saymedia-content.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MjAxMjg4MjkxNjI5MTQ3Njc1/labrador-retriever-guide.jpg
+Bulldog|Daisy|6|https://cdn.britannica.com/08/234208-050-C9A21C4C/English-bulldog-dog.jpg
+Siberian Husky|Lola|8|https://cdn.britannica.com/84/232784-050-1769B477/Siberian-Husky-dog.jpg
+Boxer|Charlie|10|https://post.bark.co/wp-content/uploads/2022/05/iStock-1257560195-1024x768.jpg
+German Shepherd|Rex|5|https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/German_Shepherd_-_DSC_0346_%2810096362833%29.jpg/220px-German_Shepherd_-_DSC_0346_%2810096362833%29.jpg
+Labrador Retriever|Max|3|https://mediacdn.libertatea.ro/unsafe/632x421/smart/filters:format(webp):contrast(8):quality(75)/https://static4.libertatea.ro/wp-content/uploads/2020/09/golden-retriever-cat-de-usor-se-dreseaza-si-ce-personalitate-are-cel-mai-indragit-caine.jpg
+Beagle|Bella|2|https://www.zooplus.ro/ghid/wp-content/uploads/2021/07/despre-beagle-1024x682.webp
+Labrador Retriever|Lara|1|https://images.saymedia-content.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MjAxMjg4MjkxNjI5MTQ3Njc1/labrador-retriever-guide.jpg
+Doberman|Cooper|7|https://images.saymedia-content.com/.image/t_share/MjAwMzg3MjgzOTk0NjE3MjA4/doberman-pinscher-guide.jpg
+Doberman|Lucy|9|https://images.saymedia-content.com/.image/t_share/MjAwMzg3MjgzOTk0NjE3MjA4/doberman-pinscher-guide.jpg
