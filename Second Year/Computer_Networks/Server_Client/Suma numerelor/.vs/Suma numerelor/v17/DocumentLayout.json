@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Criss\\Desktop\\De salvat\\Facultate\\Retele\\Suma numerelor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3C1CDDA5-C86F-45A3-B368-FA4A95CA47F5}|Suma numerelor\\Suma numerelor.vcxproj|C:\\Users\\Criss\\Desktop\\De salvat\\Facultate\\Retele\\Suma numerelor\\Suma numerelor\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3C1CDDA5-C86F-45A3-B368-FA4A95CA47F5}|Suma numerelor\\Suma numerelor.vcxproj|solutionrelative:Suma numerelor\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBAE2B4-E9E8-4710-8E0B-49957E62F9C9}|Client\\Client.vcxproj|C:\\Users\\Criss\\Desktop\\De salvat\\Facultate\\Retele\\Suma numerelor\\Suma numerelor\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EBAE2B4-E9E8-4710-8E0B-49957E62F9C9}|Client\\Client.vcxproj|solutionrelative:Suma numerelor\\Client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Client.cpp",
+              "DocumentMoniker": "C:\\Users\\Criss\\Desktop\\De salvat\\Facultate\\Retele\\Suma numerelor\\Suma numerelor\\Client.cpp",
+              "RelativeDocumentMoniker": "Suma numerelor\\Client.cpp",
+              "ToolTip": "C:\\Users\\Criss\\Desktop\\De salvat\\Facultate\\Retele\\Suma numerelor\\Suma numerelor\\Client.cpp",
+              "RelativeToolTip": "Suma numerelor\\Client.cpp",
+              "ViewState": "AgIAADYAAAAAAAAAAAAiwEEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-07T12:41:45.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Server.cpp",
+              "DocumentMoniker": "C:\\Users\\Criss\\Desktop\\De salvat\\Facultate\\Retele\\Suma numerelor\\Suma numerelor\\Server.cpp",
+              "RelativeDocumentMoniker": "Suma numerelor\\Server.cpp",
+              "ToolTip": "C:\\Users\\Criss\\Desktop\\De salvat\\Facultate\\Retele\\Suma numerelor\\Suma numerelor\\Server.cpp",
+              "RelativeToolTip": "Suma numerelor\\Server.cpp",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-07T12:36:00.497Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

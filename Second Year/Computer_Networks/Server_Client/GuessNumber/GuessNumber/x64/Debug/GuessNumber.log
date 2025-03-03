@@ -1,0 +1,5 @@
+﻿  Server.cpp
+D:\Facultate\Retele\GuessNumber\GuessNumber\Server.cpp(14,10): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Facultate\Retele\GuessNumber\GuessNumber\Server.cpp(31,9): warning C4244: 'initializing': conversion from 'SOCKET' to 'int', possible loss of data
+D:\Facultate\Retele\GuessNumber\GuessNumber\Server.cpp(45,10): warning C4244: 'initializing': conversion from 'SOCKET' to 'int', possible loss of data
+  GuessNumber.vcxproj -> D:\Facultate\Retele\GuessNumber\x64\Debug\GuessNumber.exe

@@ -1,0 +1,3 @@
+﻿  Server.cpp
+D:\Facultate\Retele\Suma numerelor\Suma numerelor\Server.cpp(139,19): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
+  Suma numerelor.vcxproj -> D:\Facultate\Retele\Suma numerelor\x64\Debug\Suma numerelor.exe
