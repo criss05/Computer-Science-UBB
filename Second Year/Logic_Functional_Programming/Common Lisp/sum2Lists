@@ -1,0 +1,46 @@
+;reverse(l1l2..ln)=l1 , n=1
+;                  reverse(l2..ln) U l1, n>1
+
+(defun reverseList(L)
+  (cond 
+       ((null L) nil)
+       (t (append (reverseList (cdr L)) (list (car L))))
+   )
+)
+
+(defun nrEl(L)
+  (cond 
+      ((null L) 0)
+      (t (+ (nrEl (cdr L)) 1))
+   )
+)
+
+
+;sumEl(l1..ln, k1..km, C)= (), n=0
+;                          (l1+C)%10 U sumEl(l2..ln, (), 1), m=0 and l1+C > 9
+;                          (l1+C)%10 U sumEl(l2..ln, (), 0), m=0 and l1+C <= 9
+;                          (l1+k1+C)%10 U sumEl(l2..ln, k2..km, 1), l1+k1+C >9
+;                          (l1+k1+C)%10 U sumEl(l2..ln, k2..km, 0), l1+k1+C <= 9
+
+
+(defun sumEl (L K C)
+  (cond 
+      ((null L) nil)
+      ((and (null K) (> (+ (car L) C) 9)) (cons (mod (+ (car L) C) 10) (sumEL (cdr L) K 1)))
+      ((and (null K) (<= (+ (car L) C) 9)) (cons (mod (+ (car L) C) 10) (sumEL (cdr L) K 0)))
+      ((> (+ (car L) (car K)  C) 9) (cons (mod (+ (car L) (car K) C) 10) (sumEL (cdr L) (cdr K) 1)))
+      ((<= (+ (car L) (car K)  C) 9) (cons (mod (+ (car L) (car K) C) 10) (sumEL (cdr L) (cdr K) 0)))
+   )
+)
+
+
+(defun sumList(L K)
+  (cond
+      ((>= (nrEl L) (nrEl K)) (sumEl (reverseList L) (reverseList K) 0))
+      ((<  (nrEl L) (nrEl K)) (sumEl (reverseList K) (reverseList L) 0))
+   )
+)  
+
+
+
+(defun main(L K) (reverseList (sumList L K)))

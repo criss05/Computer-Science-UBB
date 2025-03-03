@@ -1,0 +1,18 @@
+;Merge two sorted lists without keeping duble values:
+;Ex (1 2 3 4) , (2 3 5 7) => (1 2 3 4 5 7)
+
+;merge_list(l1l2...ln, k1k2..km)=l1l2..ln, m=0
+;                                k1k2..kn, n=0
+;                                l1 U merge_lists(l2..ln, k1..km), l1>k1
+;                                k1 U merge_lists(l1..ln, k2..km), l1<k1
+;                                l1 U merge_lists(l2..ln, k2..km), otherwise
+
+(defun merge_list(l k)
+  (cond 
+       ((null l) k)
+       ((null k) l)
+       ((< (car l) (car k)) (cons (car l) (merge_list (cdr l) k)))
+       ((> (car l) (car k)) (cons (car k) (merge_list l (cdr k))))
+       (t                   (cons (car l) (merge_list (cdr l) (cdr k))))
+  )
+)

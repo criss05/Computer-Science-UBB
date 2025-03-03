@@ -1,0 +1,50 @@
+;1. Write a function that returuns the depth of a tree repr as (node(subtree1) (subtree2)...(subtree n) using Map functions.
+
+;Ex: A   -0
+;   /\
+;  B  C   -1
+;     |
+;     D   -2
+
+;getDepth(x) = 0, x-atom
+;              1+max(getDepth(xi)), x=x1..xn, i=1..n
+
+
+(defun getDepth(x)
+  (cond 
+     ((atom x) 0)
+     (t (+ 1 (apply #'max (mapcar #'getDepth x))))
+  )
+)
+
+
+
+;2. Create a function that removes all elements multiple n from a non linear list using Map functions.
+
+;Ex: (1 2 B (3 4)) m=2
+;           ((3) ())
+;             (3)
+;((1) () (B) ((3)))
+;(1 B (3))
+
+
+;removeAll(l, m)= (), if l-number and l mod m=0
+;                 (l), if l-number
+;                 list(removeAll(l1,m) U ... U removeAll(ln, m)), l=l1..ln
+
+;main(l,m)= R1, if R1=removeAll(l,m)
+
+
+(defun removeAll (l m)
+  (cond 
+      ((and (numberp l) (=(mod l m) 0)) nil)
+      ((atom l) (list l))
+      (t (list (apply #'append (mapcar (lambda (x) (removeAll x m)) l))))
+;     (t (list (mapcan (lambda...)
+   )
+)
+
+(defun main (l m) (car (removeAll l m)))
+
+
+

@@ -1,0 +1,18 @@
+;remove all occurrences of an element form a nonliniar list
+; ex: e=1, (1 2 7 (4 5 (6 1) 1) 3(((1) 2)))=> (2 7(4 5(6)) 3 ( (() 2)))
+
+
+;removeEl(l1l2..ln, e)=(), n=0
+;                       removeEl(l2..ln, el), l1 is atom and l1=el
+;                       l1 U removeEl(l2..ln, el), l1 is atom and l1!= el
+;                       removeEl(l1) U removeEl(l2..ln),l1 is a list
+
+
+(defun removeEl (l e)
+  (cond
+       ((null l) ())
+       ((and (atom (car l)) (= (car l) e)) (removeEl (cdr l) e))
+       ((atom (car l)) (cons (car l) (removeEl (cdr l) e)))
+       (t (cons (removeEl (car l) e) (removeEl (cdr l) e)))
+   )
+)

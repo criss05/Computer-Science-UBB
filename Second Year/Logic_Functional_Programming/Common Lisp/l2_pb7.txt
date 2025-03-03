@@ -1,0 +1,50 @@
+(defun left_subtree (tree nv ne)
+  (cond
+      ((null tree) nil)
+      ((= nv (+ 1 ne)) nil)
+      (t (cons (car tree) (cons (cadr tree) (left_subtree (cddr tree) (+ 1 nv) (+ ne (cadr tree))))))
+  )
+)
+
+
+(defun right_subtree (tree nv ne)
+  (cond
+      ((null tree) nil)
+      ((= nv (+ 1 ne)) tree)
+      (t (right_subtree (cddr tree) (+ 1 nv) (+ ne (cadr tree))))
+  )
+)
+
+
+(defun left (tree) (left_subtree (cddr tree) 0 0))
+(defun right (tree) (right_subtree (cddr tree) 0 0))
+
+
+(defun findlevel (tree x level)
+  (cond 
+      ((null tree) 0)
+      ((equal x (car tree)) level)
+      (t (+ (findlevel (left tree) x (+ level 1)) (findlevel (right tree) x (+ level 1))))
+  )
+)
+
+(defun findElem (tree x)
+  (cond
+    ((null tree) 0)
+    ((equal x (car tree)) 1)
+    (t (findElem (cddr tree) x))
+  )
+)
+
+
+(defun main (tree x) 
+  (cond
+    ;((null tree) nil)
+    ((= (findElem tree x) 1) (findlevel tree x 0))
+    (t -1)
+  )
+)
+
+(print (main '(a 2 b 2 c 1 i 0 f 1 g 0 d 2 e 0 h 0) 'a))
+(print (main '() 'b))
+(print (main '(a 2 b 2 c 1 i 0 f 1 g 0 d 2 e 0 h 0) 'z))

@@ -1,0 +1,25 @@
+max(1,2)->(max 1 2)
+(+ 1 2)
+(- 10 4)
+(/ 10 4)
+(floor (/ 10 4))
+(mod 5 2)
+(list 1 2 3 4)
+(listp ( 1 2 3 4)) -Error
+(listp '(1 2 3 4)') 
+(lisp 4) - Nil (false)
+(car '(1 2 3)') -- head of the list
+(cdr '(1 2 3)') -- tali of the list
+(cdr '((1 2) 3 ())) -- Nil(empty list)
+(cons 11 '(1 2 3)) -append at the begining
+(cons '(11 22) '(1 2 3)) -append the list at the begining
+(append '(11 22) '(1 2 3)) -append the elements from the list in the secind list
+(list 11 '(1 2 3) 7 9) -creates a list with a sublist
+(numberp 5)-checks if there is a number(T)
+(numberp 'A) -NIL(false)
+(null '()) - (T)
+(null '(1 2 3)) - Nill
+(and T T) -and
+(or T NIL) - or
+(not ( or T NIL)) - negate
+(length '(1 2 3 4)) - length of a list

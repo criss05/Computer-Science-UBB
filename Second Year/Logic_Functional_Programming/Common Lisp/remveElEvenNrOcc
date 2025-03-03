@@ -1,0 +1,32 @@
+;nrOcc(E, l1..ln)= 0, n=0
+;                  1+nrOcc(E, l2..ln), l1=E and l1-atom
+;                  nrOcc(e, l2..ln), l1-atom 
+;                  nrOcc(e, l2..ln)+nrOcc(E, l1), l1-list
+
+
+(defun nrOcc(E L)
+  (cond
+      ((null L) 0)
+      ((and (atom (car L)) (equal E (car L))) (1+ (nrOcc E (cdr L)))) 
+      ((atom (car L)) (nrOcc E (cdr L)))
+      (t (+ (nrOcc E (car L)) (nrOcc E (cdr L))))
+   )
+)
+
+;removeEl(l1..ln, CL)=[], n=0
+;                      removeEl(l2..ln, CL) ,nrOcc(l1, CL) % 2 =0,l1-atom  
+;                      l1 U removeEl(l2..ln, CL), l1-atom
+;                      removeEl(l1, CL) U removeEl(l2..ln, CL), l1-list
+
+
+(defun removeEl(l cl)
+  (cond
+       ((null l) nil)
+       ((and (atom (car l)) (= (mod (nrOcc (car l) cl) 2) 0)) (removeEl (cdr l) cl))
+       ((atom (car l)) (cons (car l) (removeEl (cdr l) cl)))
+       (t (cons (removeEl (car l) cl) (removeEl (cdr l) cl)))
+   )
+)
+
+(defun main(l) (removeEl l l))
+ 
