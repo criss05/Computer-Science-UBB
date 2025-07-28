@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color:red">@ViewBag.Error</p>
+}
+
+<form method="post" asp-action="Login">
+    <input name="name" placeholder="Name..." required />
+    <button type="submit">Begin reservation</button>
+</form>

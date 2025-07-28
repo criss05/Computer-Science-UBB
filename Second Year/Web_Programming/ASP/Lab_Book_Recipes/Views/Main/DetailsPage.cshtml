@@ -1,0 +1,132 @@
+﻿@{
+	Layout = null;
+	var recipeId = ViewData["recipeId"] ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>View Recipe</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		form {
+			max-width: 500px;
+			padding: 10px;
+		}
+
+		label {
+			display: block;
+			margin-top: 10px;
+		}
+
+		input[type="text"],
+		textarea {
+			width: 100%;
+			padding: 8px;
+			margin-top: 4px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			background-color: #f9f9f9;
+		}
+
+		textarea {
+			resize: vertical;
+		}
+
+		.ingredients-list {
+			display: flex;
+			flex-direction: column;
+			margin-top: 10px;
+		}
+
+		input[type="checkbox"] {
+			cursor: default; /* show not clickable */
+		}
+
+			/* Optional: style the checkboxes as readonly */
+			input[type="checkbox"]:disabled {
+				cursor: default;
+			}
+
+		span {
+			margin-left: 8px;
+		}
+	</style>
+</head>
+<body>
+	<h1>View Recipe</h1>
+
+	<form id="detailsRecipeForm">
+		<label>
+			Author:
+			<input type="text" name="author" readonly>
+		</label>
+
+		<label>
+			Name:
+			<input type="text" name="name" readonly>
+		</label>
+
+		<label>
+			Type:
+			<input type="text" name="type" readonly>
+		</label>
+
+		<label>
+			Description:
+			<textarea name="description" rows="5" readonly></textarea>
+		</label>
+
+		<label>Ingredients:</label>
+		<div id="ingredientsContainer" class="ingredients-list">
+			<p>Loading ingredients...</p>
+		</div>
+	</form>
+
+	<script>
+		$(document).ready(async function() {
+			const recipeId = '@recipeId';
+			if (!recipeId) {
+				alert('No recipe ID provided.');
+				return;
+			}
+
+			try {
+				// Fetch all ingredients
+				const ingredientRes = await fetch('/Main/GetAllIngredients');
+				const allIngredients = await ingredientRes.json();
+
+				const container = $('#ingredientsContainer');
+				container.empty();
+				allIngredients.forEach(ingredient => {
+					const label = $('<label>');
+						label.append(`<input type="checkbox" name="ingredients[]" value="${ingredient.id}" onclick="return false;">
+									<span>${ingredient.name}</span>
+									`);
+					container.append(label);
+				});
+
+				// Fetch the recipe details
+				const recipeRes = await fetch(`/Main/GetRecipeById?id=${recipeId}`);
+				const recipe = await recipeRes.json();
+
+				$("input[name='author']").val(recipe.author);
+				$("input[name='name']").val(recipe.name);
+				$("input[name='type']").val(recipe.type);
+				$("textarea[name='description']").val(recipe.description);
+
+				const ingredientIds = recipe.ingredients.map(i => i.id.toString());
+				$('input[name="ingredients[]"]').each(function() {
+					if (ingredientIds.includes($(this).val())) {
+						$(this).prop('checked', true);
+					}
+				});
+
+			} catch (error) {
+				console.error('Error loading recipe details or ingredients:', error);
+				alert('Failed to load recipe details.');
+			}
+		});
+	</script>
+</body>
+</html>

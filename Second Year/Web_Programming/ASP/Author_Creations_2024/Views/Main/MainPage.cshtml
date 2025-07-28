@@ -1,0 +1,70 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservations</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			// $.get("/Main/GetProducts", {},
+			// 	function(data, status){
+			// 		$("#productsDiv").html(data);
+
+			// 		$("#productsDiv").on('change', 'input.product', function(){
+			// 			if(this.checked){
+			// 				const product = $(this).val();
+
+			// 				$.post("/Main/VerifyOrder", {product: product})
+			// 				.done(function(data){
+			// 					if(data){
+			// 						alert(data);
+			// 					}
+			// 				})
+			// 				.fail(function(){
+			// 					alert("Error checking the product");
+			// 				})
+			// 			}
+			// 		})
+			// })
+			
+			// $("#SubmitOrder").click(function(){
+			// 	const products = [];
+			// 	document.querySelectorAll('input[name="products[]"]:checked').forEach(input => {
+			// 		products.push(input.value);
+			// 	});
+
+			// 	$.post("/Main/SubmitOrder", {products})
+			// 	.done(function(data) {
+			// 		alert("Order submited successfully! " + data);
+			// 		window.location.reload();
+			// 	})
+			// 	.fail(function(){
+			// 		alert("Error adding the order");
+			// 	})
+			// });
+
+			$("#AddDocument").click(function() {
+				window.location.href = "/Main/GetAddDocumentPage";
+			});
+
+			$("#SeeCreations").click(function() {
+				window.location.href = "/Main/GetCreationsPage";
+			});
+
+			$("#LargestNrAuthors").click(function() {
+				window.location.href = "/Main/GetLargestNrAuthorsPage";
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>Home</h2>
+	<button id="AddDocument">Add document</button>
+	<button id="SeeCreations">See creations</button>
+	<button id="LargestNrAuthors">Largest Nr Authors</button>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservations</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#ViewChannels").click(function() {
+				window.location.href = "/Main/GetChannelsPage";
+			});
+
+			$("#ViewSubscribedChannels").click(function() {
+				window.location.href = "/Main/GetSubscribedChannelsPage/";
+			});
+
+
+			$("#Subscribe").click(function(){
+				window.location.href = "/Main/SubscribePage/";
+			});
+		});
+	</script>
+</head>
+<body>
+	<button id="ViewChannels">View channels</button>
+	<button id="ViewSubscribedChannels">View subscribed channels</button>
+	<button id="Subscribe">Subscribe to channel</button>
+</body>
+</html>

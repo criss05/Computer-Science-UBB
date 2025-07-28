@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Romania cities</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <select id="counties" name="counties">
+        <option id="optSalaj" value="Salaj">Salaj</option>
+        <option id="optCluj" value="Cluj">Cluj</option>
+        <option id="optBuzan" value="Buzau">Buzau</option>
+        <option id="optBihor" value="Bihor">Bihor</option>
+    </select>
+    <select name="cities">
+        <option id="city1" value="city1">Zalau</option>
+        <option id="city2" value="city2">Jibou</option>
+        <option id="city3" value="city3">Crasna</option>
+        <option id="city4" value="city4">Varsolt</option>
+    </select>
+
+
+    <script>
+        let citiesData = {
+            "Salaj": ["Zalau", "Jibou", "Crasna", "Varsolt"],
+            "Cluj": ["Cluj-Napoca", "Baciu", "Floresti", "Feleacu"],
+            "Buzau": ["Buzau", "Ramnicu Sarat", "Nehoiu", "Pogonele"],
+            "Bihor": ["Oradea", "Baile Felix", "Beius", "Salonta"]
+        };
+
+        document.getElementById("counties").addEventListener("change", function () {
+            let selectedCounty = this.value;
+            let citySelect = document.getElementsByName("cities")[0];
+            citySelect.innerHTML = ""; // Clear existing options
+
+            if (citiesData[selectedCounty]) {
+                citiesData[selectedCounty].forEach(city => {
+                    let option = document.createElement("option");
+                    option.textContent = city;
+                    option.value = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

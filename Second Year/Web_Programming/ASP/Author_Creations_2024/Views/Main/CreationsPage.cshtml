@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = null;
+}
+<html>
+<head>
+	<title>My channels</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.get("/Main/GetCreations",{},
+				function(data, status){
+					$("#creationDiv").html(data);
+
+
+				$("#creationDiv").on("click", ".deleteDocument", function(){
+					const id = $(this).data("id");
+					$.get("/Main/DeleteDocument", {id}).done(function() {
+						alert("Document deleted successfully!");
+						$.get("/Main/GetCreations", {},
+						function(data, status){
+							$("#creationDiv").html(data);
+					})
+					})
+					.fail(function() {
+						alert("Failed to delete the document.");
+					});
+				});
+
+				$("#creationDiv").on("click", ".deleteMovie", function(){
+					const id = $(this).data("id");
+					$.get("/Main/DeleteMovie", {id}).done(function() {
+						alert("Movie deleted successfully!");
+						$.get("/Main/GetCreations", {},
+						function(data, status){
+							$("#creationDiv").html(data);
+					})
+					})
+					.fail(function() {
+						alert("Failed to delete the movie.");
+					});
+				});
+			})
+
+		});
+	</script>
+</head>
+<body>
+	<h2>Creations</h2>
+	<div id="creationDiv"></div>
+</body>
+</html>

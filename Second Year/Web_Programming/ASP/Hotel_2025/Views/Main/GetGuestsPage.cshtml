@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = null;
+}
+<html>
+<head>
+	<title>My channels</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#search").click(function() {
+				const day = $("#day").val();
+				$.get("/Main/GetNumberGuests", {day},
+					function(data, status){
+						$("#guests").html("Number of guests in the hotel in the selected day is: " + data);
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>Guests</h2>
+	<label>Check date: <input id="day" type="date"></label>
+	<button id="search"> Search </button>
+	<p id="guests"></p>
+	
+</body>
+</html>

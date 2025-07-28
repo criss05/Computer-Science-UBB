@@ -1,0 +1,117 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recipe Book</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		button {
+			padding: 10px 20px;
+			background-color: #0a91cf;
+			color: rgb(255, 255, 255);
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+			margin-right: 20px;
+		}
+
+			button:hover {
+				background-color: #2980b9;
+			}
+
+		#searchInput {
+			padding: 10px;
+			width: 250px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-right: 10px;
+			font-size: 16px;
+			margin-bottom: 20px;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			$.get("/Main/GetRecipes", {},
+				function(data, status){
+					$("#recipeList").html(data);
+			});
+
+			$("#searchInput").on("input", function(){
+				$.get("/Main/GetRecipes", {
+					searchQuery: $("#searchInput").val()
+				},
+				function(data, status){
+					$("#recipeList").html(data);
+				});
+			});
+
+			$("#recipeList").on("click", ".detailsButton", function() {
+				const recipeId = $(this).data("id");
+				window.location.href = `/Main/DetailsRecipe/${recipeId}`;
+			});
+
+			$("#recipeList").on("click",".editButton", function() {
+				const recipeId = $(this).data("id");
+				window.location.href = `/Main/EditRecipe/${recipeId}`;
+			});
+
+			$("#recipeList").on("click", ".deleteButton", function() {
+				const recipeId = $(this).data("id");
+				if (confirm(`Are you sure you want to delete this recipe?`)) {
+					$.ajax({
+						url: `/Main/DeleteRecipe/${recipeId}`,
+						type: 'DELETE',
+						success: function(){
+							$.get("/Main/GetRecipes", {}, function(data, status){
+								$("#recipeList").html(data);
+							});
+						},
+						error: function(){
+							alert("Failed to delete the recipe.");
+						}
+					});
+				}
+			});
+
+			$('#addIngredientButton').click(function () {
+			const ingredientName = prompt("Enter the name of the new ingredient:");
+
+				if (!ingredientName || ingredientName.trim() === "") {
+					alert("Ingredient name cannot be empty.");
+					return;
+				}
+
+				$.ajax({
+					url: '/Main/AddIngredient',
+					type: 'POST',
+					contentType: 'application/json',
+					data: JSON.stringify({ name: ingredientName.trim() }),
+					success: function () {
+						alert('Ingredient added successfully.');
+					},
+					error: function (xhr, status, error) {
+						console.error('Error adding ingredient:', error);
+						alert('Failed to add ingredient: ' + xhr.responseText);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>All Recipes</h1>
+	<button id="addIngredientButton">Add Ingredients</button>
+	<a href="/Main/AddRecipe">
+		<button>Add Recipe</button>
+	</a>
+	<input type="text" id="searchInput" placeholder="Search by type." />
+	<p id="filterDisplay"></p>
+
+	<div id="recipeList">Loading recipes...</div>
+
+</body>
+</html>

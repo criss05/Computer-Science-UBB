@@ -1,0 +1,179 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Top blue bar */
+.top-bar {
+    height: 10px;
+    background-color: #0f4d92;
+    width: 100%;
+}
+
+/* Header styles */
+.main-header {
+    padding: 20px 0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    background-color: #2774AE;
+    padding: 10px 15px;
+}
+
+.logo a {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Primary navigation */
+.primary-nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.primary-nav li {
+    margin-left: 20px;
+}
+
+.primary-nav a {
+    color: #2774AE;
+    font-weight: bold;
+}
+
+.give-button {
+    background-color: #0f4d92;
+    padding: 15px 25px;
+}
+
+.give-button a {
+    color: white;
+}
+
+/* Secondary navigation */
+.secondary-nav {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15px 0;
+}
+
+.secondary-nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+.secondary-nav li {
+    margin: 0 30px;
+}
+
+.secondary-nav a {
+    color: #2774AE;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.secondary-nav i {
+    margin-left: 5px;
+}
+
+.search-icon {
+    margin-left: 50px;
+}
+
+/* Hero section */
+.hero-section {
+    display: flex;
+    margin-top: 20px;
+}
+
+.main-feature {
+    width: 75%;
+    position: relative;
+    background-color: #0f4d92;
+}
+
+.main-feature img {
+    width: 100%;
+    display: block;
+    opacity: 0.85;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    width: 100%;
+}
+
+.overlay-text h1 {
+    font-size: 5rem;
+    padding: 0 20px;
+    font-weight: normal;
+}
+
+.feature-content {
+    background-color: white;
+    padding: 20px;
+    width: 70%;
+    margin-bottom: 40px;
+}
+
+.feature-content h2 {
+    color: #0f4d92;
+    font-size: 1.5rem;
+}
+
+.side-features {
+    width: 25%;
+    padding-left: 20px;
+}
+
+.feature {
+    position: relative;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.feature img {
+    width: 100%;
+    display: block;
+}
+
+.feature-caption {
+    background-color: white;
+    padding: 15px;
+}
+
+.feature-caption h3 {
+    color: #0f4d92;
+    font-size: 1rem;
+}

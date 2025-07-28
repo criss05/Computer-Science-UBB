@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Veritcal Menu</title>
+        <style>
+            ul{
+                list-style-type: none;
+                margin:0;
+                padding:0;
+                width:200px;
+                background-color: rgb(197, 197, 197);
+            }
+            li{
+                position:relative;
+            }
+            li a{
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            li a.active{
+                background-color:rgb(0, 128, 255);
+                color:white;
+            }
+            li a:hover:not(.active){
+                background-color:rgb(139, 195, 252);
+                color:white;
+            }
+            .dropdown-content{
+                display:none;
+                position:absolute;
+                left: 100%;
+                top:0;
+                background-color:rgb(197, 197, 197);
+                min-width: 160px;
+                box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+                z-index:1;
+            }
+            .dropdown-content a{
+                color:black;
+                padding:12px 16px;
+                text-decoration:none;
+                display:block;
+            }
+            .dropdown:hover .dropdown-content{
+                display:block;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li class="dropdown"> 
+                <a class="active"> Home </a>
+                <div class="dropdown-content">
+                    <a>Importance of nature</a>
+                    <a>Importance of plants</a>
+                    <a>Importance of animals</a>
+                    <a>Importance of Landscapes</a>
+                    <a>Importance of landforms</a>
+                </div>
+            </li>
+            <li class="dropdown"> 
+                <a> Plants </a>
+                <div class="dropdown-content">
+                    <a>Definition</a>
+                    <a>Evolution</a>
+                    <a>Physiology</a>
+                    <a>Ecology</a>
+                    <a>Examples</a>
+                </div>
+            </li>
+            <li class="dropdown"> 
+                <a> Animals </a>
+                <div class="dropdown-content">
+                    <a>Etymology</a>
+                    <a>Characteristics</a>
+                    <a>Diversity</a>
+                    <a>Phylogeny</a>
+                    <a>Classiication</a>
+                </div>
+            </li>
+            <li class="dropdown"> 
+                <a> Landscapes </a>
+                <div class="dropdown-content">
+                    <a>Definition</a>
+                    <a>Physical landscapes</a>
+                    <a>Landscapes Garden</a>
+                    <a>Topographical poetry</a>
+                    <a>Galerry of landscapes</a>
+                </div>
+            </li>
+            <li class="dropdown"> 
+                <a> Landform </a>
+                <div class="dropdown-content">
+                    <a>Oceans</a>
+                    <a>Mountains</a>
+                    <a>Waterfalls</a>
+                    <a>Sand dunes</a>
+                    <a>Valleys</a>
+                </div>
+            </li>
+        </ul>
+    </body>
+</html>

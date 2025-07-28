@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = null;
+}
+<html>
+<head>
+	<title>My channels</title>
+	<meta http-equiv="refresh" content="2">
+	<style>
+		.column {
+			float: left;
+			width: 30%;
+			padding: 10px;
+			height: 300px;
+		}
+
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function (){
+			$.get("/Main/GetNrTasks", {},
+			function(data, status){
+				$("#tasks").html("Tasks modified: " + data);
+			})
+
+			$.get("/Main/GetLastModifiedUser", {},
+			function(data, status){
+				$("#userMod").html("Last updated by: " + data);
+			})
+
+			$.get("/Main/GetTasks", {},
+			function(data, status){
+				$("#tasksDiv").html(data);
+			})
+
+			$("#tasksDiv").on("click", "#MoveDone", function(){
+				const taskId = $(this).data("id");
+				$.post("/Main/MovetoDone", {id: taskId})
+				.done(function(){
+					window.location.reload();
+				});
+			});
+
+			$("#tasksDiv").on("click", "#MoveProgress", function(){
+				const taskId = $(this).data("id");
+				$.post("/Main/MovetoProgress", {id: taskId})
+				.done(function(){
+					alert("Status updated");
+					window.location.reload();
+				});
+			});
+
+			$("#tasksDiv").on("click", "#MoveTODO", function(){
+				const taskId = $(this).data("id");
+				$.post("/Main/MovetoTODO", {id: taskId})
+				.done(function(){
+					alert("Status updated");
+					window.location.reload();
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>Tasks</h2>
+	<p id="tasks"></p>
+	<p id="userMod"></p>
+	<div class="row" id="tasksDiv"></div>
+</body>
+</html>

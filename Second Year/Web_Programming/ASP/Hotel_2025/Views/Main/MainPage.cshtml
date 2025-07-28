@@ -1,0 +1,57 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservations</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$("#search").click(function() {
+				const check_in = $("#check_in").val();
+				const check_out = $("#check_out").val();
+				$.get("/Main/GetFreeRooms", {check_in, check_out},
+					function(data, status){
+						$("#roomsDiv").html(data);
+				})
+			});
+			
+			$("#roomsDiv").on("click", ".reserve_room", function(){
+				const check_in = $("#check_in").val();
+				const check_out = $("#check_out").val();
+				const r_id = $(this).data("id");
+				$.post("/Main/ReserveRoom", {r_id, check_in, check_out}).done(function() {
+					alert("Room reserved successfully!");
+					$.get("/Main/GetFreeRooms", {check_in, check_out},
+					function(data, status){
+						$("#roomsDiv").html(data);
+				})
+				})
+				.fail(function() {
+					alert("Failed to reserve the room. You may already have a reservation.");
+				});
+			});
+
+			$("#NrGuests").click(function() {
+				window.location.href = "/Main/GetGuestsPage";
+			});
+			
+			$("#GetUserReservationsPage").click(function() {
+				window.location.href = "/Main/GetUserReservationsPage";
+			});
+		});
+	</script>
+</head>
+<body>
+	<button id="GetUserReservationsPage">View my reservations</button>
+	<button id="NrGuests">See number guests</button>
+	<h2>Rooms</h2>
+	<label>Check in: <input id="check_in" type="date"></label>
+	<label>Check out: <input id="check_out" type="date"></label>
+	<button id="search"> Search </button>
+	<div id="roomsDiv"></div>
+</body>
+</html>

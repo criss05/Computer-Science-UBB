@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = null;
+}
+<html>
+<head>
+	<title>My channels</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			let nr_flags = 0
+			$.get("/Main/GetBadWordsCount", {},
+			function(data, status){
+				nr_flags = data;
+				$("#flags").html(data);
+			})
+
+			$("#insertButton").click(function(){
+				const message = $("#message_input").val();
+				$.get("/Main/VerifyMessage", {message: message}, (data)=>{
+					if (data==="Success"){
+							alert("Feedback inserted");
+							window.location.href = "/Main/Index";
+						}
+					else{
+						if(nr_flags > 2){
+							if(window.confirm(data + " . Are you sure you want to continue?")){
+								
+							}
+						}
+						else{
+							if(window.confirm(data + " . Are you sure you want to continue?")){
+								$.post("/Main/InsertFeedback", {message: message});
+							}
+						}
+					}
+				})
+			});
+
+			$("#removeBlocks").click(function(){
+				const message = $("#message_input").val();
+				$.post("/Main/RemoveBlocks", {message: message}, (data)=>{
+					const message_input = document.getElementById("message_input");
+					message_input.value=data;
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>Feedback</h2>
+	<p id="flags"></p>
+	<input type="text" id="message_input" placeholder="Message..." />
+	<button id="insertButton">Add feedback</button>
+	<button id="removeBlocks">Remove blocked words</button>
+	
+</body>
+</html>

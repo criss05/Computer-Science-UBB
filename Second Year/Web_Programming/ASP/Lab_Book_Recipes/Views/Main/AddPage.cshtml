@@ -1,0 +1,147 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Add Recipe</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+		form {
+			max-width: 500px;
+			padding: 10px;
+		}
+
+		label {
+			display: block;
+			margin-top: 10px;
+		}
+
+		input[type="text"],
+		textarea {
+			width: 100%;
+			padding: 8px;
+			margin-top: 4px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+		}
+
+		textarea {
+			resize: vertical;
+		}
+
+		.ingredients-list {
+			display: flex;
+			flex-direction: column;
+			margin-top: 10px;
+		}
+
+		button {
+			margin-top: 15px;
+			padding: 8px 15px;
+			font-size: 1rem;
+			border: none;
+			border-radius: 6px;
+			background-color: #4285f4;
+			color: white;
+			cursor: pointer;
+		}
+
+			button:hover {
+				background-color: #3367d6;
+			}
+	</style>
+</head>
+<body>
+	<h1>Add Recipe</h1>
+
+	<form id="addRecipeForm">
+		<label>
+			Author:
+			<input type="text" name="author" required>
+		</label>
+
+		<label>
+			Name:
+			<input type="text" name="name" required>
+		</label>
+
+		<label>
+			Type:
+			<input type="text" name="type" required>
+		</label>
+
+		<label>
+			Description:
+			<textarea name="description" rows="5" required></textarea>
+		</label>
+
+		<label>Ingredients:</label>
+		<div id="ingredientsContainer" class="ingredients-list">
+			<p>Loading ingredients...</p>
+		</div>
+
+		<button type="submit">Save Recipe</button>
+	</form>
+
+	<script>
+		$(document).ready(async function() {
+			try {
+				// Fetch all ingredients
+				const ingredientRes = await fetch('/Main/GetAllIngredients');
+				const allIngredients = await ingredientRes.json();
+
+				const container = $('#ingredientsContainer');
+				container.empty();
+				allIngredients.forEach(ingredient => {
+					const label = $('<label>');
+						label.append(`<input type="checkbox" name="ingredients[]" value="${ingredient.id}">
+									<span>${ingredient.name}</span>
+									`);
+					container.append(label);
+				});
+			} catch (error) {
+				console.error('Error loading recipe details or ingredients:', error);
+				alert('Failed to load recipe details.');
+			}
+
+			// Handle form submission
+			$('#addRecipeForm').submit(async function(event) {
+				event.preventDefault();
+				const formData = {
+					author: $("input[name='author']").val(),
+					name: $("input[name='name']").val(),
+					type: $("input[name='type']").val(),
+					description: $("textarea[name='description']").val(),
+					ingredients: $('input[name="ingredients[]"]:checked').map(function() {
+						return {
+							id: $(this).val(),
+							name: $(this).next("span").text().trim()
+						};
+					}).get()
+				};
+				try {
+					const response = await fetch('/Main/SaveRecipe', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(formData)
+					});
+					const result = await response.json();
+					if (result.ok) {
+						alert('Recipe saved successfully!');
+						window.location.href = '/Main/Index';
+					} else {
+						alert(result.error || 'Failed to saved recipe.');
+					}
+				} catch (error) {
+					console.error('Error saving recipe:', error);
+					alert('Network error while saving recipe.');
+				}
+			});
+		});
+	</script>
+</body>
+</html>

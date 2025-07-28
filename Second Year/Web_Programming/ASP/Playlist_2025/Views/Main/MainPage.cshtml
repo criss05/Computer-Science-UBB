@@ -1,0 +1,52 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservations</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$.get("/Main/GetSongs", {},
+				function(data, status){
+					$("#songsDiv").html(data);
+
+					$("#songsDiv").on('change', 'input.song', function(){
+						if(this.checked){
+							const song = $(this).val();
+
+							$.post("/Main/AddSong", {song: song})
+							// .done(function(data){
+							// 	if(data){
+							// 		alert(data);
+							// 	}
+							// })
+							// .fail(function(){
+							// 	alert("Error adding the song");
+							// })
+						}
+					})
+			})
+			
+			$("#SubmitPlaylist").click(function(){
+				$.post("/Main/SubmitPlaylist", {})
+				.done(function(data) {
+					alert(data);
+					window.location.reload();
+				})
+				.fail(function(){
+					alert("Error adding the playlist");
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>Playlist</h2>
+	<div id="songsDiv"></div>
+	<button id="SubmitPlaylist">Submit Playlist</button>
+</body>
+</html>

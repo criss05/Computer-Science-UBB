@@ -1,0 +1,71 @@
+body {
+    background: #f2f2f2;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#itemInput {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#addItemButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#addItemButton:hover {
+    background-color: #45a049;
+}
+
+#itemList {
+    padding: 0;
+    margin-top: 30px;
+    width: 320px;
+}
+
+#itemList li {
+    background: white;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 16px;
+}
+
+#itemList li:hover {
+    background-color: #f2f2f2;
+}
+
+.deleteItemButton {
+    background-color: #FF0000;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteItemButton:hover {
+    background-color: #c0392b;
+}

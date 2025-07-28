@@ -1,0 +1,35 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservations</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.get("/Main/GetBadWordsCount", {},
+			function(data, status){
+				$("#flags").html(data);
+			})
+
+			$("#ViewFeedbacks").click(function() {
+				window.location.href = "/Main/GetFeedbackPage";
+			});
+
+			$("#AddFeedback").click(function(){
+				window.location.href = "/Main/GetInsertFeedbackPage/";
+			});
+
+
+		});
+	</script>
+</head>
+<body>
+	<button id="ViewFeedbacks">View Feedbacks</button>
+	<button id="ViewSubscribedChannels">View subscribed channels</button>
+	<button id="AddFeedback">Add Feedback</button>
+	<p id="flags"></p>
+</body>
+</html>
