@@ -1,0 +1,71 @@
+body {
+    background: #f2f2f2;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#addIngredientInput {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#addIngredientButton {
+    padding: 10px 20px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#addIngredientButton:hover {
+    background-color: #3367d6;
+}
+
+#ingredientsList {
+    padding: 0;
+    margin-top: 30px;
+    width: 320px;
+}
+
+#ingredientsList li {
+    background: white;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 16px;
+}
+
+#ingredientsList li:hover {
+    background-color: #f2f2f2;
+}
+
+.deleteIngredientButton {
+    background-color: #FF0000;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteIngredientButton:hover {
+    background-color: #c0392b;
+}

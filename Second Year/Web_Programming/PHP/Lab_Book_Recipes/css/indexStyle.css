@@ -1,0 +1,79 @@
+body {
+    background: #f2f2f2;
+    align-items: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0a91cf;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#searchInput{
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.itemDiv{
+    display:flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin-bottom: 20px;
+    width:100%;
+}
+
+.deleteRecipe{
+    background-color: rgb(255, 84, 84);
+    color:rgb(255, 255, 255);
+}
+
+.updateRecipe {
+    background-color: #1abc9c;
+    color: white;
+}
+
+.detailsRecipe {
+    background-color: #5c6bc0;
+    color: white;
+}
+
+.container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
