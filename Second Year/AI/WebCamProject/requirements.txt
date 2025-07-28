@@ -1,0 +1,8 @@
+opencv-python~=4.11.0.86
+torch~=2.7.0
+torchvision
+facenet-pytorch
+scikit-learn~=1.6.1
+Pillow~=9.5.0
+sympy~=1.14.0
+numpy~=2.2.6
