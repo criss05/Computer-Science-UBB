@@ -1,0 +1,90 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Facultate\\Baze\\Lab1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|d:\\facultate\\baze\\lab1\\lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|d:\\facultate\\baze\\lab1\\lab1\\form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|d:\\facultate\\baze\\lab1\\lab1\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|solutionrelative:lab1\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|D:\\Facultate\\Baze\\Lab1\\lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{46E283EE-322F-4CA0-BC4E-EFDD1BAB42BE}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.resx",
+              "DocumentMoniker": "D:\\Facultate\\Baze\\Lab1\\Lab1\\Form1.resx",
+              "RelativeDocumentMoniker": "Lab1\\Form1.resx",
+              "ToolTip": "D:\\Facultate\\Baze\\Lab1\\Lab1\\Form1.resx",
+              "RelativeToolTip": "Lab1\\Form1.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-03-14T12:18:23.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\Facultate\\Baze\\Lab1\\Lab1\\App.config",
+              "RelativeDocumentMoniker": "Lab1\\App.config",
+              "ToolTip": "D:\\Facultate\\Baze\\Lab1\\Lab1\\App.config",
+              "RelativeToolTip": "Lab1\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-03-14T12:18:07.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Facultate\\Baze\\Lab1\\Lab1\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab1\\Form1.cs",
+              "ToolTip": "D:\\Facultate\\Baze\\Lab1\\Lab1\\Form1.cs",
+              "RelativeToolTip": "Lab1\\Form1.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAADgvwsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T12:57:37.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\Facultate\\Baze\\Lab1\\Lab1\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab1\\Form1.cs",
+              "ToolTip": "D:\\Facultate\\Baze\\Lab1\\Lab1\\Form1.cs [Design]",
+              "RelativeToolTip": "Lab1\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T12:57:01.884Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
