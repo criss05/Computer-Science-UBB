@@ -1,0 +1,13 @@
+test,groups,p_value
+T-test,"('binary', '1-point') vs ('binary', '2-point')",0.15762336260225243
+Wilcoxon rank-sum,"('binary', '1-point') vs ('binary', '2-point')",0.6100075520376812
+T-test,"('binary', '1-point') vs ('real', 'arithmetic')",0.3857379059231959
+Wilcoxon rank-sum,"('binary', '1-point') vs ('real', 'arithmetic')",1.7739278225827016e-09
+T-test,"('binary', '1-point') vs ('real', 'blx-alpha')",3.0185089109589434e-05
+Wilcoxon rank-sum,"('binary', '1-point') vs ('real', 'blx-alpha')",9.444947151237864e-11
+T-test,"('binary', '2-point') vs ('real', 'arithmetic')",0.5318229662928491
+Wilcoxon rank-sum,"('binary', '2-point') vs ('real', 'arithmetic')",1.7739278225827016e-09
+T-test,"('binary', '2-point') vs ('real', 'blx-alpha')",0.03630340095467438
+Wilcoxon rank-sum,"('binary', '2-point') vs ('real', 'blx-alpha')",5.22831602652652e-11
+T-test,"('real', 'arithmetic') vs ('real', 'blx-alpha')",0.3252841517995627
+Wilcoxon rank-sum,"('real', 'arithmetic') vs ('real', 'blx-alpha')",0.2972716890893069
