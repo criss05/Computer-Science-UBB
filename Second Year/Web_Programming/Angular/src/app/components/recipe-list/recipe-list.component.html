@@ -1,0 +1,14 @@
+<input class="search-container" type="text" [(ngModel)]="searchTerm" (input)="filterRecipes()"
+  placeholder="Search recipes..." />
+
+<div *ngFor="let recipe of filteredRecipes">
+  <div class="recipe-card">
+    <h2>{{ recipe.name }}</h2>
+    <p><strong>Author:</strong> {{ recipe.author }}</p>
+    <p><strong>Type:</strong> {{ recipe.type }}</p>
+    <p>{{ recipe.description }}</p>
+    <button (click)="viewRecipeDetails(recipe.id)" class="details-button">View Details</button>
+    <button (click)="updateRecipeDetails(recipe.id)" class="update-button">View Details</button>
+    <button (click)="deleteRecipe(recipe.id)" class="delete-button">Delete</button>
+  </div>
+</div>

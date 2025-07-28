@@ -1,0 +1,35 @@
+<form (ngSubmit)="updateRecipe()">
+  <div>
+    <label>Author:</label>
+    <input type="text" [(ngModel)]="recipe.author" name="author" required />
+  </div>
+
+  <div>
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="recipe.name" name="name" required />
+  </div>
+
+  <div>
+    <label>Type:</label>
+    <input type="text" [(ngModel)]="recipe.type" name="type" required />
+  </div>
+
+  <div>
+    <label>Description:</label>
+    <textarea [(ngModel)]="recipe.description" name="description" required></textarea>
+  </div>
+
+  <div>
+    <label>Ingredients:</label>
+    <div *ngFor="let ingredient of allIngredients">
+      <input 
+        type="checkbox" 
+        [checked]="selectedIngredients.includes(ingredient.id)" 
+        (change)="toggleIngredient(ingredient.id, $event)"
+      />
+      {{ ingredient.name }}
+    </div>
+  </div>
+
+  <button type="submit">Update Recipe</button>
+</form>

@@ -1,0 +1,20 @@
+<div class="ingredients-container">
+    <h2>Ingredients</h2>
+  
+    <div class="add-ingredient">
+      <input 
+        type="text" 
+        [(ngModel)]="newIngredientName" 
+        placeholder="Enter an ingredient..." 
+      />
+      <button (click)="addIngredient()">Add item</button>
+    </div>
+  
+    <ul class="ingredients-list">
+      <li *ngFor="let ingredient of ingredients">
+        {{ ingredient.name }}
+        <button (click)="deleteIngredient(ingredient.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,45 @@
+.recipe-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.delete-button {
+  background-color: rgb(255, 84, 84);
+  color:rgb(255, 255, 255);
+}
+
+.details-button{
+  background-color: #5c6bc0;
+  color: white;
+}
+
+.update-button{
+  background-color: #1abc9c;
+  color: white;
+}
+
+.search-container{
+  padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
