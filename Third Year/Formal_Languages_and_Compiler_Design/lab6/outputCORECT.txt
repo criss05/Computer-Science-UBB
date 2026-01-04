@@ -1,0 +1,57 @@
+"INPUT n
+INPUT r
+
+OUTPUT "Computing arrangements and combinations..."
+
+arr = n A r 
+comb = n C r
+
+OUTPUT "Arrangements: ", arr
+OUTPUT "Combinations: ", comb
+
+IF arr > comb THEN
+	OUTPUT "There are more arrangements then combinations."
+ELSE
+	OUTPUT "There are more combinations then arrangements."
+END
+"
+
+INPUT
+ID(n)
+INPUT
+ID(r)
+OUTPUT
+STRING_LITERAL("Computing arrangements and combinations...")
+ID(arr)
+ASSIGN
+ID(n)
+ARRANGEMENTS
+ID(r)
+ID(comb)
+ASSIGN
+ID(n)
+COMBINATIONS
+ID(r)
+OUTPUT
+STRING_LITERAL("Arrangements: ")
+COMMA
+ID(arr)
+OUTPUT
+STRING_LITERAL("Combinations: ")
+COMMA
+ID(comb)
+IF
+ID(arr)
+GT
+ID(comb)
+THEN
+OUTPUT
+STRING_LITERAL("There are more arrangements then combinations.")
+ELSE
+OUTPUT
+STRING_LITERAL("There are more combinations then arrangements.")
+END
+
+
+"Result:
+Syntactically correct: YES"

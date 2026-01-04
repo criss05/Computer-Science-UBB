@@ -1,0 +1,10 @@
+N = { S, A }
+E = { A–Z, a–z, 0–9, _ }
+S = { S }
+
+@letter = A-Z, a-z
+@digit = 0-9
+
+P:
+S -> @letter A | @letter
+A -> @letter A | @digit A | _ A | @letter | @digit | _

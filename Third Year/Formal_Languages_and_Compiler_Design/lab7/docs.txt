@@ -1,0 +1,55 @@
+LAB 7: SYNTACTICAL ANALYSIS (LL(1) PARSING)
+---------------------------------------------------------
+
+1. THEORETICAL BACKGROUND: LL(1) PARSING
+LL(1) is a top-down parsing method that parses the input from Left to right, performing a Leftmost derivation of the sentence, using 1 token of lookahead.
+
+To implement an LL(1) parser, the following components are required:
+- FIRST Set: The set of terminals that can begin strings derived from a non-terminal.
+- FOLLOW Set: The set of terminals that can appear immediately to the right of a non-terminal in some sentential form.
+- Parsing Table: A 2D table M[A, a] directing the parser on which production rule to apply.
+
+2. IMPLEMENTATION DETAILS
+The solution is implemented in Python and consists of four main classes designed to handle the grammar loading, table construction, and parsing logic.
+
+A. Grammar Representation (GrammarContext)
+   Reads the grammar from a text file. It parses the file to identify Non-terminals, Terminals, Start Symbol, and Production Rules.
+
+B. LL(1) Analyzer (LL1Analyzer)
+   Responsible for the core logic:
+   1. FIRST Construction: Iteratively computes the FIRST set for all non-terminals.
+   2. FOLLOW Construction: Uses the computed FIRST sets to determine the FOLLOW sets.
+   3. Table Construction: Populates the parsing table. If multiple rules occupy the same cell, a conflict is flagged.
+
+C. Syntax Parser (SyntaxParser)
+   Performs deterministic parsing using a stack:
+   - Input Stack: Contains the input sequence (tokens) ending with '$'.
+   - Work Stack: Initialized with the Start Symbol and '$'.
+   - Output: Records the production rules applied.
+
+D. Tree Formatter (TreeFormatter)
+   Satisfies the grading requirement for a table representation. It converts the list of production indices into a tree structure and outputs a table with columns: Index, Symbol, Father Index, and Sibling Index.
+
+3. REQUIREMENT 1: SEMINAR GRAMMAR
+This test demonstrates the parser's ability to handle a simple arithmetic grammar.
+
+- Input Grammar: Seminar grammar (N = S A B C D).
+- Input Sequence: "a * ( a + a )" from seq.txt.
+- Result: The parser successfully constructed the table without conflicts.
+- Output: A string of productions (e.g., [1, 4, 5...]) confirming the sequence is valid.
+
+4. REQUIREMENT 2: MINI DSL GRAMMAR
+This test demonstrates the parser's ability to handle the specific Mini DSL defined for the course.
+
+- Input Grammar: DSL grammar (N = program, stmt_list...) including rules for INPUT, OUTPUT, IF, and assignments.
+- Input PIF: The Program Information File containing tokenized code (e.g., INPUT ID, OUTPUT STRING_LITERAL).
+- Result: The grammar was validated as LL(1).
+- Output: The parsing tree represented as a Father-Sibling relation table, fulfilling the requirement for the maximum grade.
+
+Example Partial Output Table:
+Index      Symbol               Father     Sibling   
+-------------------------------------------------------
+1          program              0          0         
+2          stmt_list            1          0         
+3          stmt                 2          4         
+...

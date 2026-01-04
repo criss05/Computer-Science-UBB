@@ -1,0 +1,60 @@
+﻿================================================================================
+LAB DOCUMENTATION: PARALLEL POLYNOMIAL MULTIPLICATION
+================================================================================
+
+This document describes the implementation of four polynomial multiplication variants and presents performance measurements for comparison.
+
+I. ALGORITHMS DESCRIPTION
+-------------------------
+
+1. CLASSIC ALGORITHM (O(n^2))
+   - Description: This is the standard "schoolbook" multiplication. It computes every possible cross-product (a_i * b_j) and sums them into the correct power of x (C[i+j]).
+   - Complexity: O(n²), where n is the number of coefficients.
+
+2. KARATSUBA ALGORITHM (O(n^log₂³))
+   - Description: A faster, recursive divide-and-conquer algorithm. Instead of performing four recursive multiplications for the sub-problems (as the Classic method would), it achieves the result using only three main multiplications, trading multiplication complexity for simple addition/subtraction.
+   - Complexity: O(n^1.58).
+
+II. PARALLELIZATION STRATEGIES
+-------------------------------
+
+1. CLASSIC PARALLEL (O(n^2))
+   - Goal: Distribute the workload of the outer loop (iterating through coefficients of A) among multiple threads.
+   - Synchronization: Lock-free approach. Each thread computes its assigned portion of the cross-products into a private, local result vector (C_local). After all threads complete (`t.join()`), the main thread performs a final sequential accumulation (merge) of all C_local vectors into the final result C. This avoids race conditions during calculation.
+
+2. KARATSUBA PARALLEL (O(n^log2(3)))
+   - Goal: Exploit the three independent recursive calls (Z0, Z1, Z2) to run them concurrently.
+   - Strategy (Hybrid Parallelism): The algorithm launches new threads only down the recursion tree. Two branches (Z0 and Z2) are spawned into new threads, while the third (Z1) is executed by the current thread.
+   - Thread Limit (Optimization): Thread creation is limited to a specific depth to prevent massive thread overhead. Parallel execution stops when the depth reaches log2(NUM_THREADS) (where NUM_THREADS = 8 in the test, so depth limit is 3). Below this depth, recursion continues sequentially.
+
+III. PERFORMANCE MEASUREMENTS (Example Cases)
+----------------------------------------------
+
+Times are in seconds (s).
+
+N = 100 (Example Small Case)
+
+N=100
+O(n^2) Sequential: 0.0001 s
+O(n^2) Parallel: 0.0024 s
+Karatsuba Sequential: 0.0004 s
+Karatsuba Parallel: 0.0021 s
+
+N = 50,000 (Example Medium Case)
+
+N=50000
+O(n^2) Sequential: 35.2686 s
+O(n^2) Parallel: 4.5313 s
+Karatsuba Sequential: 4.4570 s
+Karatsuba Parallel: 2.7010 s
+
+N = 100,000 (Example Large Case)
+
+N=100000
+O(n^2) Sequential: 138.3993 s
+O(n^2) Parallel: 18.9796 s
+Karatsuba Sequential: 13.8188 s
+Karatsuba Parallel: 8.4857 s
+
+
+================================================================================

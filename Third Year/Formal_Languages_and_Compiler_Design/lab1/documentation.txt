@@ -1,0 +1,72 @@
+This DSL is designed as a minimal, readable language for mathematical computations, particularly focused on combinatorial calculus. It provides built-in operators for factorial, permutations, arrangements, and combinations, along with standard arithmetic. Its primary use case is to allow learners, teachers, and script writers to quickly express and compute combinatorial problems interactively or in batch scripts. By combining simple input/output commands, domain-specific operators, and control structures, it enables writing clear and maintainable programs without requiring the full complexity of a general-purpose language.
+
+The choice of statements in the DSL reflects its focus on usability and clarity:
+
+INPUT / OUTPUT → provide basic interactivity, making it easy to read values from the user and display results.
+Example: 
+INPUT n
+OUTPUT n!
+This reads a number and outputs its factorial.
+
+DEF … BEGIN … END / RETURN → allow reusable function definitions with return values. This makes it possible to define and reuse combinatorial formulas.
+Example: 
+DEF binomial(n, k) BEGIN 
+    RETURN n C k
+END
+OUTPUT binomial(6, 2)
+This defines a function that computes the binomial coefficient and outputs 6 C 2.
+
+IF … THEN … ELSE … END → enable decisions and comparisons, useful for checking number properties such as comparing different combinatorial values.
+Example: 
+IF (5 A 3) > (5 C 3) THEN 
+    OUTPUT "Arrangements are larger" 
+ELSE 
+    OUTPUT "Combinations are larger" 
+END
+This checks whether arrangements of 5 elements taken 3 are larger than combinations and outputs a message.
+
+Expressions with arithmetic and domain-specific operators → at the heart of the DSL are operators for both normal math and combinatorial calculus:
+
+! → factorial
+
+P → permutations (n P)
+
+A → arrangements (n A r)
+
+C → combinations (n C r)
+
++, -, *, /, % → standard arithmetic
+
+Examples: 
+OUTPUT 6!
+OUTPUT 6 P
+OUTPUT 6 A 2
+OUTPUT 6 C 2
+OUTPUT (6 C 2) + (6 A 2)
+These examples show how to compute factorial, permutations, arrangements, combinations, and combine them with arithmetic.
+
+Why These Constructs?
+
+This DSL was designed to balance simplicity with mathematical power.
+
+INPUT / OUTPUT → interactivity and experimentation with values.
+
+DEF / RETURN → reusable formulas (e.g., binomial coefficient, multinomial).
+
+IF / ELSE → decision-making in number comparisons.
+
+Expressions with domain-specific operators → allow direct and intuitive representation of combinatorial concepts without writing formulas manually.
+
+The domain-specific operators (!, P, A, C) are central: they provide immediate access to the most important combinatorial computations, making the DSL well-suited for education and problem-solving.
+
+Use Cases
+
+This DSL is well-suited to:
+
+Classrooms → teaching factorials, permutations, and combinations interactively.
+
+Quick computational scripts → solving combinatorial exercises without long formulas.
+
+Lightweight integrations → embedding in systems that require combinatorial calculations.
+
+By keeping syntax minimal and readable, the language lowers the barrier for learners while remaining powerful enough for meaningful computation.

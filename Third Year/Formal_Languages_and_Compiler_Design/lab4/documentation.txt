@@ -1,0 +1,40 @@
+Finite Automata and Regular Grammars Documentation
+==========================
+
+1. Regular Grammar
+
+1.1 Identifiers (RGID)
+
+- Identifiers must start with a letter (@letter).
+- Remaining characters can be letters, digits, or underscores.
+
+1.2 Constants (RGConst)
+- Numeric constants:
+  - 0 or non-zero numbers optionally prefixed with + or -.
+  - B handles sequences of digits after the first non-zero digit.
+- String constants:
+  - Begin and end with ".
+  - May include letters, digits, symbols, and spaces.
+  - Q handles all characters until the closing quote (G -> ").
+- The macro @symbol includes punctuation and special characters.
+
+
+2. Python Script: RG -> FA Conversion
+
+Functionality:
+1. Parse RG file:
+   - Reads macros (@letter, @digit, @symbol) and expands them.
+   - Reads productions (S -> ...) and stores them in a dictionary.
+2. Expand Symbols:
+   - Expands macros, ranges (A-Z), and (space) to literal " ".
+3. Build FA:
+   - Converts RG into FA representation:
+     - States (Q): Non-terminals + final states.
+     - Alphabet (E): All terminal symbols.
+     - Transitions (d): Maps state + symbol -> next state.
+     - Start State (q0): First non-terminal in the grammar.
+     - Final States (qf): Any state that reaches a terminal end.
+4. Write FA to File:
+   - Outputs FA in readable format, including states, alphabet, start state,
+     final states, and transitions.
+- F denotes final states automatically added for terminal-only productions.

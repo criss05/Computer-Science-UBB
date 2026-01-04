@@ -1,0 +1,16 @@
+INPUT n
+INPUT r
+
+OUTPUT "Computing arrangements and combinations..."
+
+arr = n A r 
+comb = n C r
+
+OUTPUT "Arrangements: ", arr
+OUTPUT "Combinations: ", comb
+
+IF ( arr > comb ) THEN
+	OUTPUT "There are more arrangements then combinations."
+ELSE
+	OUTPUT "There are more combinations then arrangements."
+END

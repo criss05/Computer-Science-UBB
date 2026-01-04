@@ -1,0 +1,18 @@
+N = { S, A, B, Q, R }
+E = { +, -, 0-9, ", A-Z, a-z, _, ., ,, !, ?, ', ", :, @, #, $, ^, &, <, >, \, /, (space) }
+S = { S }
+
+@letter = A-Z, a-z
+@digit = 0-9
+@nonzero = 1-9
+@symbol = _, ., ,, !, ?, ', ", :, @, #, $, ^, &, <, >, \, /
+
+P:
+S -> + A | - A | @nonzero B | 0 | " Q
+A -> @nonzero B | @nonzero
+B -> @digit B | @digit
+Q -> @letter Q | @digit Q | @symbol Q | (space) Q | @letter G | @digit G | @symbol G | (space) G
+G -> "
+
+
+(c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (strchr(symbols, c) != NULL

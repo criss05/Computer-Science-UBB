@@ -1,0 +1,71 @@
+%option noyywrap yylineno
+%{
+#include "combinatorics.tab.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+FILE *outFile;
+extern int yylval;
+%}
+
+%%
+"INPUT"      { fprintf(outFile, "INPUT\n"); return INPUT; }
+"OUTPUT"     { fprintf(outFile, "OUTPUT\n"); return OUTPUT; }
+"IF"         { fprintf(outFile, "IF\n"); return IF; }
+"THEN"       { fprintf(outFile, "THEN\n"); return THEN; }
+"ELSE"       { fprintf(outFile, "ELSE\n"); return ELSE; }
+"END"        { fprintf(outFile, "END\n"); return END; }
+"DEF"        { fprintf(outFile, "DEF\n"); return DEF; }
+"BEGIN"      { fprintf(outFile, "BEGIN\n"); return BEGIN_KW; }
+"RETURN"     { fprintf(outFile, "RETURN\n"); return RETURN; }
+
+"A"          { fprintf(outFile, "ARRANGEMENTS\n"); return ARRANGEMENTS; }
+"C"          { fprintf(outFile, "COMBINATIONS\n"); return COMBINATIONS; }
+"P"          { fprintf(outFile, "PERMUTATIONS\n"); return PERMUTATIONS; }
+"!"          { fprintf(outFile, "FACTORIAL\n"); return FACTORIAL; }
+
+"+"          { fprintf(outFile, "PLUS\n"); return PLUS; }
+"-"          { fprintf(outFile, "MINUS\n"); return MINUS; }
+"*"          { fprintf(outFile, "TIMES\n"); return TIMES; }
+"/"          { fprintf(outFile, "DIV\n"); return DIV; }
+"%"          { fprintf(outFile, "MOD\n"); return MOD; }
+
+"="          { fprintf(outFile, "ASSIGN\n"); return ASSIGN; }
+"=="         { fprintf(outFile, "EQ\n"); return EQ; }
+"!="         { fprintf(outFile, "NEQ\n"); return NEQ; }
+">="         { fprintf(outFile, "GE\n"); return GE; }
+"<="         { fprintf(outFile, "LE\n"); return LE; }
+">"          { fprintf(outFile, "GT\n"); return GT; }
+"<"          { fprintf(outFile, "LT\n"); return LT; }
+
+"("          { fprintf(outFile, "LPAREN\n"); return LPAREN; }
+")"          { fprintf(outFile, "RPAREN\n"); return RPAREN; }
+","          { fprintf(outFile, "COMMA\n"); return COMMA; }
+
+\"([A-Za-z0-9_ ,.!?\' :@#$^&<>\\/])*\" {
+    fprintf(outFile, "STRING_LITERAL(%s)\n", yytext);
+    return STRING_LITERAL;
+}
+
+[a-zA-Z_][a-zA-Z0-9_]* { 
+    fprintf(outFile, "ID(%s)\n", yytext);
+    return ID;
+}
+
+[0-9]+                  { 
+    fprintf(outFile, "CONST(%s)\n", yytext);
+    yylval = atoi(yytext);
+    return CONST;
+}
+
+[ \t]+   { }
+\n       { }
+
+"#".* {} 
+
+. {
+    fprintf(stderr, "Lexical error at line %d: unexpected character '%s'\n", yylineno, yytext);
+    return 0;
+}
+%%

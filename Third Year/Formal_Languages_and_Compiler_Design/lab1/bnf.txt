@@ -1,0 +1,37 @@
+program ::= statement_list
+statement_list ::= statement statement_list | epsilon
+statement ::= input_stmt | output_stmt | if_stmt | def_stmt | return_stmt | expr_stmt | assign_stmt
+assign_stmt ::= identifier "=" expression
+input_stmt ::= "INPUT" identifier
+output_stmt ::= "OUTPUT" output_item { "," output_item }
+output_item ::= expression | string_literal
+expression_tail ::= "," expression expression_tail | epsilon
+return_stmt ::= "RETURN" expression
+if_stmt ::= "IF" condition "THEN" statement_list else_part "END"
+else_part ::= "ELSE" statement_list | epsilon
+def_stmt ::= "DEF" identifier "(" parameters_opt ")" "BEGIN" statement_list "END"
+parameters_opt ::= parameters | epsilon
+parameters ::= identifier parameters_tail
+parameters_tail ::= "," identifier parameters_tail | epsilon
+expr_stmt ::= expression
+expression ::= term expression_rest
+expression_rest ::= operator term expression_rest | epsilon
+term ::= identifier | number | "(" expression ")" | function_call | term "!"
+function_call ::= identifier "(" arguments_opt ")"
+arguments_opt ::= arguments | epsilon
+arguments ::= expression arguments_tail
+arguments_tail ::= "," expression arguments_tail | epsilon
+condition ::= expression comparison_op expression
+operator ::= "A" (*arrangements*) | "C" (*combinations or binomial coefficient*) | "P" (*permutations*) | "+" | "-" | "*" | "/" | "%"
+comparison_op ::= "==" | "!=" | ">" | "<" | ">=" | "<="
+string_literal ::= '"' string_characters '"'
+string_characters ::= string_character string_characters | epsilon
+string_character ::= letter | digit | " " | "_" | "," | "." | "!" | "?" | "'" | ":" | "@" | "#" | "$" | "^" | "&" | "<" | ">" | "\" | "/"
+identifier ::= letter identifier_tail
+identifier_tail ::= letter_or_digit_or_underscore identifier_tail | epsilon
+letter_or_digit_or_underscore ::= letter | digit | "_"
+number ::= "0" | nonzero_digit number_tail
+number_tail ::= digit number_tail | epsilon
+nonzero_digit ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+digit ::= "0" | nonzero_digit
+letter ::= "A" | … | "Z" | "a" | … | "z"

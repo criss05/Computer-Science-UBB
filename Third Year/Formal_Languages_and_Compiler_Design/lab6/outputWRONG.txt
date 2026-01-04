@@ -1,0 +1,32 @@
+"INPUT n
+INPUT r
+
+OUTPUT "Computing arrangements and combinations..."
+
+arr = A r 
+comb = n C r
+
+OUTPUT "Arrangements: ", arr
+OUTPUT "Combinations: ", comb
+
+IF arr > comb THEN
+	OUTPUT "There are more arrangements then combinations."
+ELSE
+	OUTPUT "There are more combinations then arrangements."
+END
+"
+
+INPUT
+ID(n)
+INPUT
+ID(r)
+OUTPUT
+STRING_LITERAL("Computing arrangements and combinations...")
+ID(arr)
+ASSIGN
+ARRANGEMENTS
+
+
+"Error: 
+Syntax error at line 6 near 'A': syntax error
+Syntactically correct: NO"

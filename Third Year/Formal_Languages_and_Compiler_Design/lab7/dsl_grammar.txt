@@ -1,0 +1,57 @@
+N = program stmt_list stmt id_sub_stmt input_stmt output_stmt output_item_list output_item if_stmt else_part def_stmt params_opt params params_tail return_stmt expression expression_rest term term_tail args_opt args args_tail condition comparison_op operator fact_opt
+E = ID CONST STRING_LITERAL INPUT OUTPUT IF THEN ELSE END DEF RETURN BEGIN A C P + - * / % = == != > < >= <= ( ) , !
+S = program
+P =
+program -> stmt_list
+stmt_list -> stmt stmt_list
+stmt_list -> epsilon
+stmt -> INPUT ID
+stmt -> OUTPUT output_item output_item_list
+stmt -> IF condition THEN stmt_list else_part END
+stmt -> DEF ID ( params_opt ) BEGIN stmt_list END
+stmt -> RETURN expression
+stmt -> ID id_sub_stmt
+id_sub_stmt -> = expression
+id_sub_stmt -> term_tail expression_rest
+input_stmt -> INPUT ID
+output_item_list -> , output_item output_item_list
+output_item_list -> epsilon
+output_item -> expression
+output_item -> STRING_LITERAL
+else_part -> ELSE stmt_list
+else_part -> epsilon
+params_opt -> params
+params_opt -> epsilon
+params -> ID params_tail
+params_tail -> , ID params_tail
+params_tail -> epsilon
+expression -> term expression_rest
+expression_rest -> operator term expression_rest
+expression_rest -> epsilon
+term -> ID term_tail
+term -> CONST fact_opt
+term -> ( expression ) fact_opt
+term_tail -> ( args_opt ) fact_opt
+term_tail -> fact_opt
+fact_opt -> !
+fact_opt -> epsilon
+args_opt -> args
+args_opt -> epsilon
+args -> expression args_tail
+args_tail -> , expression args_tail
+args_tail -> epsilon
+condition -> expression comparison_op expression
+comparison_op -> ==
+comparison_op -> !=
+comparison_op -> >
+comparison_op -> <
+comparison_op -> >=
+comparison_op -> <=
+operator -> A
+operator -> C
+operator -> P
+operator -> +
+operator -> -
+operator -> *
+operator -> /
+operator -> %

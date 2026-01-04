@@ -1,0 +1,75 @@
+%{
+#include <stdio.h>
+#include "st.h"
+#include "pif.h"
+
+PIF programPIF;
+STNode* symTable = NULL;
+int current_index = 0;
+%}
+
+DIGIT       [0-9]
+NONZERO     [1-9]
+LETTER      [A-Za-z]
+ID          {LETTER}({LETTER}|{DIGIT}|_)*
+NUMBER      ([+-]?{NONZERO}{DIGIT}*|0)(\.[0-9]+)?
+STRING      \"[A-Za-z0-9 _.,!?'\":@#$^&<>\\/]*\"
+
+
+%%
+INPUT|OUTPUT|IF|THEN|ELSE|END|DEF|BEGIN|RETURN { add_token(&programPIF, yytext, -1); }
+
+"=="|"!="|">="|"<="|">"|"<" { add_token(&programPIF, yytext, -1); }
+
+"=" { add_token(&programPIF, "=", -1); }
+
+"+"|"-"|"*"|"/"|"%"|"A"|"C"|"P"|"!" { add_token(&programPIF, yytext, -1); }
+
+"("|")"|"," { add_token(&programPIF, yytext, -1); }
+
+{STRING} {
+    int index = insert_node(&symTable, yytext, &current_index);
+    add_token(&programPIF, "string_literal", index);
+}
+
+{NUMBER} {
+    int index = insert_node(&symTable, yytext, &current_index);
+    add_token(&programPIF, "number", index);
+}
+
+{ID} {
+    int index = insert_node(&symTable, yytext, &current_index);
+    add_token(&programPIF, "identifier", index);
+}
+
+
+"#".*          {}
+[ \t\n\r]+     {}
+
+
+. { add_token(&programPIF, "Unrecognized character", -1); return 0; }
+
+%%
+
+
+int main(int argc, char** argv) {
+    if(argc > 1) yyin = fopen(argv[1], "r");
+    else yyin = stdin;
+
+    init_pif(&programPIF);
+    yylex();
+
+    printf("\n--- PROGRAM INTERNAL FORM ---\n");
+    print_pif(&programPIF);
+
+    printf("\n--- SYMBOL TABLE ---\n");
+    print_ST(symTable);
+
+    free_ST(symTable);
+    free_pif(&programPIF);
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}

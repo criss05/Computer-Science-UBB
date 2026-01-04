@@ -1,0 +1,26 @@
+DEF power(base, exp) BEGIN
+	IF exp == 0 THEN
+		RETURN 1
+	ELSE
+		RETURN base * power(base, exp - 1)
+		RETURN 1
+	END
+END
+
+DEF binomial_term(n, k, i) BEGINI
+	RETURN (n C k) * power(n, i)
+END
+
+DEF binomial_sum(n, k, i) BEGIN
+	IF i > k THEN
+		RETURN 0
+	ELSE
+		RETURN binomial_term(n, k, i) + binomial_sum(n, k, i + 2 - 1)
+	END
+END
+
+INPUT n
+INPUT k
+
+OUTPUT "n C 1 power of k using the Binomial Theorem: "
+OUTPUT binomial_sum(n, k, 0)
